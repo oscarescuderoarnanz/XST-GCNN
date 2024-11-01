@@ -1,0 +1,32 @@
+{
+    "s1": {
+        "dropout": 0,
+        "decay": 1,
+        "lr": 3,
+        "hid_lay": 0,
+        "K": 0,
+        "seed": 7,
+        "n_lay": 2,
+        "best_loss": 0.2949875295162201
+    },
+    "s2": {
+        "dropout": 1,
+        "decay": 0,
+        "lr": 2,
+        "hid_lay": 1,
+        "K": 1,
+        "seed": 6,
+        "n_lay": 4,
+        "best_loss": 0.2801526188850403
+    },
+    "s3": {
+        "dropout": 0,
+        "decay": 2,
+        "lr": 1,
+        "hid_lay": 4,
+        "K": 1,
+        "seed": 4,
+        "n_lay": 5,
+        "best_loss": 0.26876041293144226
+    }
+}
