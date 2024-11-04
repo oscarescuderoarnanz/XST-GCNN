@@ -3,7 +3,7 @@
 This directory is organized into three main steps, representing the core blocks of our proposed architecture.
 
 ## step1_graphEstimation
-This folder contains methods for graph estimation, which form the foundational step of our architecture. Various techniques for estimating graphs from data are included here.
+This folder contains graph estimation methods, which form our architecture's foundational step. Various techniques for estimating graphs from data are included here: i) correlations; ii) smoothness; and iii) hgd-dtw. 
 
 ## step2_graphRepresentation
 This folder includes approaches for graph representation. Once the graphs are estimated, these methods define how they are structured and represented, preparing them for further analysis and processing.
