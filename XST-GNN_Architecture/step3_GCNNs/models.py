@@ -32,7 +32,7 @@ class standard_gcnn_layer(nn.Module):
         self.S += torch.eye(self.S.shape[0], device=self.S.device)
         self.d = self.S.sum(1)
         self.D_inv = torch.diag(1 / torch.sqrt(self.d))
-        # Compute the normalized Laplacian for the message passing algorithm:
+        # Compute the symmetric normalized adjacency matrix for the message passing algorithm:
         self.S = self.D_inv @ self.S @ self.D_inv
         self.S = nn.Parameter(self.S, requires_grad=False)
         
