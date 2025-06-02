@@ -1,12 +1,10 @@
 import models
 import torch
-import torch.nn.functional as F
-import torch.nn as nn
 import pandas as pd
 import numpy as np
 import json
 from sklearn.metrics import roc_auc_score, confusion_matrix
-import matplotlib.pyplot as plt
+from sklearn.metrics import average_precision_score
 
 ###############################################################
 # Functions to save and load best hyperparameters and results #
@@ -283,7 +281,7 @@ def val_model(best_result_by_split, typeOfGraph, params, folders, norm, device, 
     Returns:
         tuple: Results, interpretability data, fully connected classifiers, and GNN models.
     """
-    results = {'test_acc': [], 'roc_auc': [], 'sensitivity': [], 'specificity': []}
+    results = {'test_acc': [], 'roc_auc': [], 'sensitivity': [], 'specificity': [], 'auc_pr': []}
     # Initialize 
     n_epochs = params['n_epochs']
     # Early stopping configuration
@@ -377,25 +375,29 @@ def val_model(best_result_by_split, typeOfGraph, params, folders, norm, device, 
         model.eval()
         with torch.no_grad():  # Deactivate gradient computation
             pred_probs, importances_pre_fc, weights_fc, pre_sigmoid, filters = model(X_test_vec)
-            
+
             interpretability.append([importances_pre_fc, weights_fc, pre_sigmoid, filters])
-            
+
             pred = torch.round(pred_probs).view(-1)
 
-            # Check against ground-truth labels.
+            # Check against ground-truth labels
             test_correct = pred == y_test  
-            # Derive ratio of correct predictions.
             test_acc = int(test_correct.sum()) / int(test_correct.shape[0])  
+
             # Calculate ROC-AUC
             roc_auc = roc_auc_score(y_test.cpu().numpy(), pred_probs.cpu().numpy())
+
+            # Calculate AUC-PR
+            auc_pr = average_precision_score(y_test.cpu().numpy(), pred_probs.cpu().numpy())
+
             # Calculate confusion matrix for sensitivity and specificity
             tn, fp, fn, tp = confusion_matrix(y_test.cpu().numpy(), pred.cpu().numpy()).ravel()
-
             sensitivity = tp / (tp + fn)
             specificity = tn / (tn + fp)
 
             results['test_acc'].append(test_acc)
             results['roc_auc'].append(roc_auc)
+            results['auc_pr'].append(auc_pr)
             results['sensitivity'].append(sensitivity)
             results['specificity'].append(specificity)
             

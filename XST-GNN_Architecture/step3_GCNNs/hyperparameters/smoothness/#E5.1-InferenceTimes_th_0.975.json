@@ -1,0 +1,11 @@
+{
+    "s1": {
+        "inference_time_seconds": 4.28
+    },
+    "s2": {
+        "inference_time_seconds": 4.25
+    },
+    "s3": {
+        "inference_time_seconds": 7.74
+    }
+}

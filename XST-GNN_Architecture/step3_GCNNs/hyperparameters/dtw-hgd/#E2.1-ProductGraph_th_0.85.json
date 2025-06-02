@@ -1,32 +1,32 @@
 {
     "s1": {
-        "dropout": 1,
+        "dropout": 0,
         "decay": 4,
-        "lr": 2,
-        "hid_lay": 1,
-        "K": 0,
-        "seed": 0,
-        "n_lay": 1,
-        "best_loss": 0.33464062213897705
-    },
-    "s2": {
-        "dropout": 2,
-        "decay": 4,
-        "lr": 3,
+        "lr": 1,
         "hid_lay": 0,
         "K": 0,
-        "seed": 0,
-        "n_lay": 0,
-        "best_loss": 0.3423939347267151
+        "seed": 3,
+        "n_lay": 2,
+        "best_loss": 0.2864839732646942
+    },
+    "s2": {
+        "dropout": 0,
+        "decay": 1,
+        "lr": 2,
+        "hid_lay": 2,
+        "K": 0,
+        "seed": 8,
+        "n_lay": 2,
+        "best_loss": 0.3111722469329834
     },
     "s3": {
         "dropout": 0,
-        "decay": 1,
-        "lr": 1,
-        "hid_lay": 3,
+        "decay": 4,
+        "lr": 2,
+        "hid_lay": 2,
         "K": 0,
-        "seed": 0,
-        "n_lay": 5,
-        "best_loss": 0.3175487816333771
+        "seed": 4,
+        "n_lay": 3,
+        "best_loss": 0.2982884347438812
     }
 }
